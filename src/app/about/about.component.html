@@ -1,17 +1,28 @@
-<!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
-  ~ This software is released under MIT license.
-  ~ The full license information can be found in LICENSE in the root directory of this project.
-  -->
-<p>This is a page to help demonstrate routing.</p>
-<button class="btn btn-primary" (click)="open = true">Show modal</button>
-<clr-modal [(clrModalOpen)]="open">
-  <h3 class="modal-title">I have a nice title</h3>
-  <div class="modal-body">
-    <p>But not much to say...</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline" (click)="open = false">Cancel</button>
-    <button type="button" class="btn btn-primary" (click)="open = false">Ok</button>
-  </div>
-</clr-modal>
+<div class="row" style="width:1000px; margin: auto;">
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="card" style="width:900px; margin: auto;">
+            <div class="card-header">
+                <div style="width: auto; margin: auto;">World Cup Coffee Company</div>
+            </div>
+            <div class="card-block">
+                <div class="card-media-block">
+                    <img src="https://s3-media3.fl.yelpcdn.com/bphoto/CjpUVOWl8WtfF_apuICeAw/o.jpg" class="card-media-image">
+                    <div class="card-media-description">
+                        <span class="card-media-title">
+                        Formerly Toomer’s Coffee, the new name reflects the same commitment to quality of service you came to expect from Sandy & Trish Toomer!
+                        The new Owner, <b>Jihad Abassi</b> is an Auburn man through and through and well known in the food and beverage industry and has been a popular fixture in the local Youth Soccer world as a Coach and parent.
+                        </span>
+                        <span class="card-media-text">
+                            PS: YES, we will be serving Toomer’s Coffee Roasters fabulous coffee exclusively!
+                            <p>Location: 1100 South College, Suite 102 (Behind Loco’s)</p>
+                            <p>War Eagle!</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-sm btn-link" href="#" [routerLink]="['/order']" routerLinkActive="active">Order Now!</a>
+            </div>
+        </div>
+    </div>
+</div>

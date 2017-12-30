@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
+import { MenuComponent } from './menu/menu.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         AboutComponent,
-        HomeComponent
+        HomeComponent,
+        MenuComponent,
+        OrderComponent
     ],
     imports: [
         BrowserAnimationsModule,
