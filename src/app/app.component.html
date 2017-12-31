@@ -7,12 +7,13 @@
       </a>
     </div>
       <div class="header-nav" [clr-nav-level]="1">
+          <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
           <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
           <a class="nav-link" href="#" [routerLink]="['/menu']" routerLinkActive="active"><span class="nav-text">Menu</span></a>
           <a class="nav-link" href="#" [routerLink]="['/order']" routerLinkActive="active"><span class="nav-text">Order</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
       </div>
-    <div class="header-actions">
+    <div class="header-actions" style="padding-top: 6px">
+        <a class="btn btn-primary" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Log In</span></a>
     </div>
   </clr-header>
   <div class="content-container">

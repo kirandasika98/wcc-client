@@ -10,6 +10,7 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { MenuComponent } from './menu/menu.component';
 import { OrderComponent } from './order/order.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { OrderComponent } from './order/order.component';
         AboutComponent,
         HomeComponent,
         MenuComponent,
-        OrderComponent
+        OrderComponent,
+        LoginComponent
     ],
     imports: [
         BrowserAnimationsModule,
