@@ -7,13 +7,30 @@
       </a>
     </div>
       <div class="header-nav" [clr-nav-level]="1">
-          <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
           <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/menu']" routerLinkActive="active"><span class="nav-text">Menu</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/order']" routerLinkActive="active"><span class="nav-text">Order</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
+          <div *ngIf="adminService.me().activeSession">
+            <a class="nav-link" href="#" [routerLink]="['/dashboard']" routerLinkActive="active"><span class="nav-text">Dashboard</span></a>
+          </div>
       </div>
     <div class="header-actions" style="padding-top: 6px">
-        <a class="btn btn-primary" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Log In</span></a>
+      <div *ngIf="!adminService.me().activeSession">
+          <a class="btn btn-primary" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Log In</span></a>
+      </div>
+      <div *ngIf="adminService.me().activeSession">
+          <clr-dropdown [clrCloseMenuOnItemClick]="false">
+              <button type="button" class="btn btn-primary" clrDropdownTrigger>
+                  <span class="nav-text">{{ adminService.me().username }}</span>
+                  <clr-icon shape="caret down"></clr-icon>
+              </button>
+              <clr-dropdown-menu *clrIfOpen>
+                  <label class="dropdown-header">Settings</label>
+                  <button type="button" clrDropdownItem>Profile</button>
+                  <div class="dropdown-divider"></div>
+                  <button type="button" clrDropdownItem (click)="adminService.logout()">Logout</button>
+              </clr-dropdown-menu>
+          </clr-dropdown>
+      </div>
     </div>
   </clr-header>
   <div class="content-container">

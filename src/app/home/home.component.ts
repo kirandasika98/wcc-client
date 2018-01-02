@@ -4,11 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 
 @Component({
     styleUrls: ['./home.component.scss'],
     templateUrl: './home.component.html',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+    public results : Object;
+    constructor(private http: HttpClient) {}
 
+    ngOnInit() {
+    }
 }

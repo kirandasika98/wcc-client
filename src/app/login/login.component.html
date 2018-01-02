@@ -5,20 +5,30 @@
             World Cup Coffee Company
         </label>
         <div class="login-group">
-            <div class="auth-source select">
+            <!-- <div class="auth-source select">
                 <select id="login-auth-source-1">
                     <option>Local Users</option>
                     <option>Administrator</option>
                 </select>
+            </div> -->
+            <div *ngIf="errMessage !== undefined">
+                <div class="login_err">{{ errMessage.message }}</div>
             </div>
-            <input class="username" type="text" id="login_username" placeholder="Username">
-            <input class="password" type="password" id="login_password" placeholder="Password">
+            <div *ngIf="loginSuccess">
+                <div class="login_success">Login Successful. Redirecting...</div>
+            </div>
+            <!-- Username -->
+            <input class="username" type="text" id="login_username" placeholder="Username" required minlength="2" 
+            value="{{ loginUsername }}" [(ngModel)]="loginUsername" name="loginUsername" autocomplete="off">
+
+            <!-- Password -->
+            <input class="password" type="password" id="login_password" placeholder="Password" required minlength="3" 
+            value="{{ loginPassword }}" [(ngModel)]="loginPassword" name="loginPassword" autocomplete="off">
             <div class="checkbox">
                 <input type="checkbox" id="rememberme">
-                <label for="rememberme">
-                    Remember me</label>
+                <label for="rememberme">Remember me</label>
             </div>
-            <button type="submit" class="btn btn-primary">NEXT</button>
+            <button type="submit" class="btn btn-primary" (click)="login()">LOGIN</button>
         </div>
     </form>
 </div>

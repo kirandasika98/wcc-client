@@ -1,0 +1,47 @@
+<div class="main-container">
+    <div class="content-container">
+        <div class="content-area">
+            <h1>
+                New Orders
+                <button type="button" (click)="getOrders()" class="btn btn-sm btn-link">
+                    <span class="label label-info">Refresh</span>
+                </button>
+            </h1>
+            <div *ngFor="let order of newOrders">
+                <div class="row">
+                    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="card-header">
+                                {{ order.itemName }}
+                                <span class="ready-timestamp">
+                                    <small>{{ order.createdAt }}</small>
+                                </span>
+                            </div>
+
+                            <div class="card-block">
+                                <div class="card-title">
+                                    {{ order.specialRequest }}
+                                </div>
+                                <div class="card-text">
+                                    <p class="lead">User Details</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                    <button class="btn btn-sm btn-link"><span class="label label-success clickable">Done</span></button>
+                                    <button class="btn btn-sm btn-link"><span class="label label-danger clickable">Error</span></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <nav class="sidenav">
+                <section class="sidenav-content">
+                    <a href="..." class="nav-link active">
+                        New Orders <span class="badge">{{ newOrders.length }}</span>
+                    </a>
+                </section>
+            </nav>
+        </div>
+    </div>

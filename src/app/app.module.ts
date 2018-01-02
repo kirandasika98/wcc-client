@@ -5,12 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import { ROUTING } from "./app.routing";
+import { Globals } from "./globals";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { MenuComponent } from './menu/menu.component';
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminService } from "app/admin.service";
 
 @NgModule({
     declarations: [
@@ -19,17 +24,22 @@ import { LoginComponent } from './login/login.component';
         HomeComponent,
         MenuComponent,
         OrderComponent,
-        LoginComponent
+        LoginComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserAnimationsModule,
         BrowserModule,
+        HttpClientModule,
         FormsModule,
         HttpModule,
         ClarityModule,
         ROUTING
     ],
-    providers: [],
+    providers: [ 
+        Globals,
+        AdminService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
