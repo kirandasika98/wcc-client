@@ -21,7 +21,8 @@ export const ROUTES: Routes = [
     {path: 'order', component: OrderComponent},
     {path: 'menu', component: MenuComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'dashboard', component: DashboardComponent}
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'dashboard/all', component:DashboardComponent}
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);

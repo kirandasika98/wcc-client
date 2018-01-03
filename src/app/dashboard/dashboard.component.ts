@@ -31,8 +31,12 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    // Get new orders
-    this.getOrders();
+    if (this.router.url === '/dashboard') {
+      this.getOrders();
+    }
+    else if (this.router.url === '/dashboard/all') {
+      this.getAllOrders();
+    }
   }
 
   getOrders() {
@@ -42,6 +46,19 @@ export class DashboardComponent implements OnInit {
     const orderUrl = this.globals.BASE_API_URL + "/order/?num=10";
     this.http.get(orderUrl).subscribe(data => {
       for (let order of (data as Array<Order>)) {
+        this.newOrders.push(order);
+      }
+    });
+  }
+
+  getAllOrders() {
+    if (this.newOrders.length > 0) {
+      this.newOrders = [];
+    }
+
+    const allOrdersUrl = this.globals.BASE_API_URL + "/order/old";
+    this.http.get(allOrdersUrl).subscribe(data => {
+      for (let order of data as Array<Order>) {
         this.newOrders.push(order);
       }
     });
@@ -73,5 +90,14 @@ export class DashboardComponent implements OnInit {
   orderError(order: Order) {
     // Send an error to the server so it can be sent to the user
     console.log(order);
+  }
+
+  refreshOrders() {
+    if (this.router.url === '/dashboard') {
+      this.getOrders();
+    }
+    else if (this.router.url === '/dashboard/all') {
+      this.getAllOrders();
+    }
   }
 }

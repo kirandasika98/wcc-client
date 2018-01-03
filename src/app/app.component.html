@@ -17,20 +17,18 @@
       <div *ngIf="!adminService.me().activeSession">
           <a class="btn btn-primary" href="#" [routerLink]="['/login']" routerLinkActive="active"><span class="nav-text">Log In</span></a>
       </div>
-      <div *ngIf="adminService.me().activeSession">
-          <clr-dropdown [clrCloseMenuOnItemClick]="false">
-              <button type="button" class="btn btn-primary" clrDropdownTrigger>
-                  <span class="nav-text">{{ adminService.me().username }}</span>
-                  <clr-icon shape="caret down"></clr-icon>
-              </button>
-              <clr-dropdown-menu *clrIfOpen>
-                  <label class="dropdown-header">Settings</label>
-                  <button type="button" clrDropdownItem>Profile</button>
-                  <div class="dropdown-divider"></div>
-                  <button type="button" clrDropdownItem (click)="adminService.logout()">Logout</button>
-              </clr-dropdown-menu>
-          </clr-dropdown>
-      </div>
+      <clr-dropdown *ngIf="adminService.me().activeSession" [clrCloseMenuOnItemClick]="true">
+          <button type="button" class="btn profile-btn" clrDropdownTrigger>
+              <span class="nav-text">{{ adminService.me().username | uppercase }}</span>
+              <clr-icon shape="caret down"></clr-icon>
+          </button>
+          <clr-dropdown-menu *clrIfOpen>
+              <label class="dropdown-header">Settings</label>
+              <button type="button" clrDropdownItem>Profile</button>
+              <div class="dropdown-divider"></div>
+              <button type="button" clrDropdownItem (click)="adminService.logout()">Logout</button>
+          </clr-dropdown-menu>
+      </clr-dropdown>
     </div>
   </clr-header>
   <div class="content-container">

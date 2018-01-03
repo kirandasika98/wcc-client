@@ -3,7 +3,7 @@
         <div class="content-area">
             <h1>
                 New Orders
-                <button type="button" (click)="getOrders()" class="btn btn-sm btn-link">
+                <button type="button" (click)="refreshOrders()" class="btn btn-sm btn-link">
                     <span class="label label-info">Refresh</span>
                 </button>
             </h1>
@@ -13,7 +13,7 @@
                     <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="card-header">
-                                {{ order.itemName | uppercase }}
+                                {{ order.product.name | uppercase }}
                                 <span class="ready-timestamp">
                                     <small>(ready at {{order.createdAt | date:'MM-dd HH:mm'}})</small>
                                 </span>
@@ -63,6 +63,18 @@
                     <a href="/dashboard/all" class="nav-link active">
                         All Orders
                     </a>
+                    <section *ngIf="adminService.me().superUser" class="nav-group">
+                        <input id="superUserSettings" type="checkbox" />
+                        <label for="superUserSettings">Superuser Settings</label>
+                        <ul class="nav-list">
+                            <li>
+                                <a class="nav-link">
+                                    <clr-icon shape="plus"></clr-icon>
+                                    Add Product
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
                 </section>
             </nav>
         </div>
