@@ -7,28 +7,47 @@
                     <span class="label label-info">Refresh</span>
                 </button>
             </h1>
+            <!-- starting to loop through all new order -->
             <div *ngFor="let order of newOrders">
                 <div class="row">
                     <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="card-header">
-                                {{ order.itemName }}
+                                {{ order.itemName | uppercase }}
                                 <span class="ready-timestamp">
-                                    <small>{{ order.createdAt }}</small>
+                                    <small>(ready at {{order.createdAt | date:'MM-dd HH:mm'}})</small>
                                 </span>
                             </div>
 
                             <div class="card-block">
                                 <div class="card-title">
-                                    {{ order.specialRequest }}
+                                    {{ order.specialRequest | uppercase }}
                                 </div>
                                 <div class="card-text">
                                     <p class="lead">User Details</p>
+                                    <ul>
+                                        <li>Name: {{ order.user.fullName }}</li>
+                                        <li>Mobile: {{ order.user.mobileNumber }}</li>
+                                        <li>Order Status: <span class="ready-timestamp">{{ order.orderStatus }}</span></li>
+                                        <li *ngIf="order.payment === null">
+                                            Payment Status: <span class="label label-info">NOT PAID</span>
+                                        </li>
+                                        <li *ngIf="order.payment !== null">
+                                            Payment Status: <span class="label label-success">{{ order.payment.paymentStatus }}</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                    <button class="btn btn-sm btn-link"><span class="label label-success clickable">Done</span></button>
-                                    <button class="btn btn-sm btn-link"><span class="label label-danger clickable">Error</span></button>
+                                    <button class="btn btn-sm btn-link" *ngIf="order.orderStatus === 'RECEIVED'" (click)="updateOrder(order.id)">
+                                        <span class="label label-info">Start</span>
+                                    </button>
+                                    <button class="btn btn-sm btn-link" *ngIf="order.orderStatus === 'PROCESSING'" (click)="updateOrder(order.id)">
+                                        <span class="label label-success clickable">Done</span>
+                                    </button>
+                                    <button class="btn btn-sm btn-link" (click)="orderError(order)">
+                                        <span class="label label-danger clickable">Error</span>
+                                    </button>
                             </div>
 
                         </div>

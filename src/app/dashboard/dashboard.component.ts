@@ -47,4 +47,31 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  updateOrder(id: number) {
+    let updateOrder : Order;
+    for (let order of this.newOrders) {
+      if (order.orderStatus === 'RECEIVED' && order.id === id) {
+        order.orderStatus = 'PROCESSING';
+        updateOrder = order;
+        break;
+      }
+
+      if (order.orderStatus === 'PROCESSING' && order.id === id) {
+        order.orderStatus = 'PROCESSED';
+        updateOrder = order;
+        break;
+      }
+    }
+
+    // Send request to server and save the state
+    const orderUpdateUrl = this.globals.BASE_API_URL + "/order/" + id;
+    this.http.put(orderUpdateUrl, updateOrder).subscribe(data => {
+      this.getOrders();
+    });
+  }
+
+  orderError(order: Order) {
+    // Send an error to the server so it can be sent to the user
+    console.log(order);
+  }
 }

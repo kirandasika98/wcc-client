@@ -12,7 +12,6 @@ import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
     templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit{
-    public results : Object;
     constructor(private http: HttpClient) {}
 
     ngOnInit() {
